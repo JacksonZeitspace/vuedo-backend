@@ -1,0 +1,7 @@
+{
+  "Environment": "DEVELOPMENT",
+  "server_origin": "http://localhost:8080",
+  "dbConfig": {
+    "host": "mongodb://localhost/todo"
+  }
+}
