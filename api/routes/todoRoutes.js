@@ -7,9 +7,9 @@ module.exports = function (app) {
     .post(todoController.add_todo);
 
   app
-    .route(`/todos/:title`)
+    .route(`/todos/:_id`)
     .delete(todoController.delete_todo)
     .put(todoController.edit_todo);
 
-  app.route(`/todos/:title/done`).put(todoController.toggle_done);
+  app.route(`/todos/:_id/done`).put(todoController.toggle_done);
 };

@@ -13,7 +13,7 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   cors = require("cors"),
   corsOptions = {
-    origin: "http://localhost:3000",
+    origin: "http://localhost:8081",
   };
 
 const fixtureFiles = {

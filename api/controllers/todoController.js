@@ -1,5 +1,5 @@
 var mongoose = require("mongoose"),
-  todos = mongoose.model("todos");
+  todos = require("../models/todoModel");
 
 exports.list_todos = function (req, res) {
   try {
@@ -34,8 +34,8 @@ exports.add_todo = function (req, res) {
 
 exports.delete_todo = function (req, res) {
   try {
-    const { title } = req.params;
-    todos.deleteOne({ title }, function (err, result) {
+    const { _id } = req.params;
+    todos.deleteOne({ _id }, function (err, result) {
       if (err) {
         res.status(500).json({ error: `Delete failure.` });
       } else {
@@ -49,18 +49,20 @@ exports.delete_todo = function (req, res) {
 
 exports.edit_todo = function (req, res) {
   try {
-    const { title } = req.params;
+    const { _id } = req.params;
     let data = req.body;
-    todos.findOneAndUpdate({ title }, { $set: data }, { new: true }, function (
-      err,
-      todo
-    ) {
-      if (err) {
-        return res.status(500).json({ error: `Update failure` });
-      } else {
-        return res.status(201).json({ todo });
+    todos.findOneAndUpdate(
+      { _id },
+      { $set: data },
+      { new: true },
+      function (err, todo) {
+        if (err) {
+          return res.status(500).json({ error: `Update failure` });
+        } else {
+          return res.status(201).json({ todo });
+        }
       }
-    });
+    );
   } catch (err) {
     return res.status(500).json({ error: `Server failure.` });
   }
@@ -68,10 +70,10 @@ exports.edit_todo = function (req, res) {
 
 exports.toggle_done = function (req, res) {
   try {
-    const { title } = req.params;
+    const { _id } = req.params;
     let data = req.body;
     todos.findOneAndUpdate(
-      { title },
+      { _id },
       { done: data.done },
       { new: true },
       function (err, todo) {
