@@ -5,12 +5,12 @@ fixtures.save("todos", {
   todos: [
     {
       title: "Clean Car",
-      description: "Car b messy :(",
+      description: "Vacuum seats",
       done: false,
     },
     {
       title: "Laundry",
-      description: "Clothes b dirty :(",
+      description: "Clean Clothes",
       done: false,
     },
     {
@@ -20,7 +20,7 @@ fixtures.save("todos", {
     },
     {
       title: "Clean Sink",
-      description: "Sink b dirty :(",
+      description: "Scrub and do dishes",
       done: false,
     },
   ],
